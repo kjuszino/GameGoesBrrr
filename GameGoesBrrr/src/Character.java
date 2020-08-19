@@ -16,14 +16,17 @@ public class Character implements Damageable {
     }
 
     public String getName(){
+
         return this.name;
     }
 
     public int getHealth(){
+
         return this.health;
     }
 
     public int getDamage(){
+
         return this.damage;
     }
 
@@ -36,7 +39,7 @@ public class Character implements Damageable {
             this.health = 0;
         }
     }
-
+    //Heals the player
     public void heal(int amount){
         if(this.health + amount<=this.maxHealth){
             this.health+=amount;
