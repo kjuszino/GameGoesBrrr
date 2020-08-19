@@ -1,3 +1,4 @@
+import java.util.Random;
 public class Goblin implements Enemy, Damageable {
     private int health;
     private int damage;
@@ -6,6 +7,8 @@ public class Goblin implements Enemy, Damageable {
         this.health = 10;
         this.damage = 3;
     }
+
+    //reduces health by amount provided
     @Override
     public void takeDamage(int damage) {
         if(this.health-damage>=0){
@@ -18,7 +21,12 @@ public class Goblin implements Enemy, Damageable {
 
     @Override
     public int getLoot() {
-        return 1;
+        Random random =new Random();
+        int lootChance = random.nextInt(1000);
+        if(lootChance>800){
+            return 1;
+        }
+        return -1;
     }
 
     @Override

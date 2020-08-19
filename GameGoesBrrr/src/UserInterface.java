@@ -9,16 +9,21 @@ public class UserInterface {
         this.mainCharacter = new Character("Placeholder");
 
     }
+    //runs the game
     public void start() throws InterruptedException {
 
 
         System.out.println("Hello, what's your name?");
         this.mainCharacter.changeName(scanner.nextLine());
         System.out.println("Hello, " + this.mainCharacter.getName());
-        this.mainCharacter.equip(new Weapon(0));
+        this.mainCharacter.equip(new Weapon(0));//equips the "fist" weapon
         while(this.mainCharacter.getHealth()>0) {
             String advance = scanner.nextLine();
             while(!(advance.equals("quit"))){
+                if(advance.equals("inventory")){  //FIX THIS TODD
+                    this.mainCharacter.getInventory().print();
+                    continue;
+                }
                 System.out.println(this.mainCharacter.getName() + " takes a step forward");
                 System.out.println();
                 eventDrawer();
@@ -30,15 +35,15 @@ public class UserInterface {
 
 
     }
-
+    //randomises the event
     public void eventDrawer() throws InterruptedException {
         Random random = new Random();
         int encounter = random.nextInt(1000);
         if(encounter<=499){
             System.out.println("Nothing happens");
-        }else if(encounter>501 && encounter<=502){
+        }else if(encounter>=501 && encounter<=990){
             fight(new Goblin());
-        }else if(encounter>=503 && encounter<=1000){
+        }else if(encounter>=991 && encounter<=1000){
             fight(new Dog());
         }
     }
@@ -63,6 +68,13 @@ public class UserInterface {
 
         }
         System.out.println();
-        System.out.println(enemy + " has been defeated by " + this.mainCharacter.getName() + " and dropped " + enemy.getLoot());
+        int drop = enemy.getLoot();
+        if(drop>0){
+            Weapon weapon = new Weapon(drop);
+            this.mainCharacter.getInventory().add(weapon);
+            System.out.println(enemy + " has been defeated by " + this.mainCharacter.getName() + " and dropped " + weapon.getName());
+            return;
+        }
+        System.out.println(enemy + " has been defeated by " + this.mainCharacter.getName());
     }
 }

@@ -4,6 +4,7 @@ public class Character implements Damageable {
     private int maxHealth;
     private int damage;
     private Weapon weapon;
+    private Inventory inventory;
 
     public Character(String name){
         this.name = name;
@@ -11,6 +12,7 @@ public class Character implements Damageable {
         this.maxHealth = 100;
         this.damage = 0;
         this.weapon = new Weapon(0);
+        this.inventory = new Inventory();
     }
     //Changes the name of the character
     public void changeName(String newName){
@@ -34,6 +36,10 @@ public class Character implements Damageable {
     public int getDamage(){
 
         return this.damage;
+    }
+
+    public Inventory getInventory(){
+        return this.inventory;
     }
 
     //reduces the health by amount provided in the parameter
