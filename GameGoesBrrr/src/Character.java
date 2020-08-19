@@ -24,7 +24,7 @@ public class Character implements Damageable {
 
         return this.health;
     }
-
+    //returns player's damage
     public int getDamage(){
 
         return this.damage;
