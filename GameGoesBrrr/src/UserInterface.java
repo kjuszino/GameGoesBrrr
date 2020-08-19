@@ -42,7 +42,7 @@ public class UserInterface {
 
     public void fight(Enemy enemy) throws InterruptedException {
         while(enemy.getHealth()>0 && this.mainCharacter.getHealth()>0) {
-            this.mainCharacter.attack((Damagable) enemy);
+            this.mainCharacter.attack((Damageable) enemy);
             System.out.println(this.mainCharacter.getName() + " attacked " + enemy + " and dealt " + this.mainCharacter.getDamage() + " damage");
             Thread.sleep(300);
             System.out.println(enemy + " has " + enemy.getHealth() + " health left");

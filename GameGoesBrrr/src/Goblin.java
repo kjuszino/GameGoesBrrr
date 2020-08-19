@@ -1,4 +1,4 @@
-public class Goblin implements Enemy,Damagable {
+public class Goblin implements Enemy, Damageable {
     private int health;
     private int damage;
 
@@ -32,8 +32,8 @@ public class Goblin implements Enemy,Damagable {
     }
 
     @Override
-    public void attack(Damagable damagable){
-        damagable.takeDamage(this.damage);
+    public void attack(Damageable damageable){
+        damageable.takeDamage(this.damage);
     }
 
     @Override

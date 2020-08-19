@@ -1,4 +1,4 @@
-public class Character implements Damagable {
+public class Character implements Damageable {
     private String name;
     private int health;
     private int maxHealth;
@@ -44,9 +44,9 @@ public class Character implements Damagable {
             this.health = maxHealth;
         }
     }
-    //Deals damage to the object implementing Damagable interface
-    public void attack(Damagable damagable) {
-        damagable.takeDamage(this.damage);
+    //Deals damage to the object implementing Damageable interface
+    public void attack(Damageable damageable) {
+        damageable.takeDamage(this.damage);
 
     }
 }
