@@ -20,8 +20,9 @@ public class UserInterface {
         while(this.mainCharacter.getHealth()>0) {
             String advance = scanner.nextLine();
             while(!(advance.equals("quit"))){
-                if(advance.equals("inventory")){  //FIX THIS TODD
+                if(advance.equals("inventory")){
                     this.mainCharacter.getInventory().print();
+                    advance = scanner.nextLine();
                     continue;
                 }
                 System.out.println(this.mainCharacter.getName() + " takes a step forward");
