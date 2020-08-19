@@ -15,6 +15,7 @@ public class UserInterface {
         System.out.println("Hello, what's your name?");
         this.mainCharacter.changeName(scanner.nextLine());
         System.out.println("Hello, " + this.mainCharacter.getName());
+        this.mainCharacter.equip(new Weapon(0));
         while(this.mainCharacter.getHealth()>0) {
             String advance = scanner.nextLine();
             while(!(advance.equals("quit"))){

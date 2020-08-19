@@ -3,8 +3,8 @@ public class Goblin implements Enemy, Damageable {
     private int damage;
 
     public Goblin(){
-        this.health = 25;
-        this.damage = 7;
+        this.health = 10;
+        this.damage = 3;
     }
     @Override
     public void takeDamage(int damage) {

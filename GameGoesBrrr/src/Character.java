@@ -3,16 +3,22 @@ public class Character implements Damageable {
     private int health;
     private int maxHealth;
     private int damage;
+    private Weapon weapon;
 
     public Character(String name){
         this.name = name;
         this.health = 100;
         this.maxHealth = 100;
-        this.damage = 5;
+        this.damage = 0;
+        this.weapon = new Weapon(0);
     }
     //Changes the name of the character
     public void changeName(String newName){
         this.name = newName;
+    }
+    public void equip(Weapon weapon){
+        this.weapon = weapon;
+        this.damage += weapon.getDamage();
     }
 
     public String getName(){

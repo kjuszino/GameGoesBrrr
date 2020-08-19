@@ -3,8 +3,8 @@ public class Dog implements Enemy, Damageable {
     private int damage;
 
     public Dog(){
-        this.health = 16;
-        this.damage = 9;
+        this.health = 5;
+        this.damage = 5;
     }
     @Override
     public void takeDamage(int damage) {
