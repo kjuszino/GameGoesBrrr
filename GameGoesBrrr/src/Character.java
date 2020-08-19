@@ -27,6 +27,7 @@ public class Character implements Damagable {
         return this.damage;
     }
 
+    //reduces the health by amount provided in the parameter
     @Override
     public void takeDamage(int damage){
         if(this.health-damage>=0){
@@ -43,8 +44,9 @@ public class Character implements Damagable {
             this.health = maxHealth;
         }
     }
-
-    public void attack(Damagable damagable){
+    //Deals damage to the object implementing Damagable interface
+    public void attack(Damagable damagable) {
         damagable.takeDamage(this.damage);
+
     }
 }
