@@ -10,7 +10,7 @@ public class Character implements Damageable {
         this.maxHealth = 100;
         this.damage = 5;
     }
-
+    //Changes the name of the character
     public void changeName(String newName){
         this.name = newName;
     }
