@@ -19,7 +19,7 @@ public class Character implements Damageable {
 
         return this.name;
     }
-
+    //returns player's health
     public int getHealth(){
 
         return this.health;
