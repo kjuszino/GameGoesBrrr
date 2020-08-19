@@ -21,6 +21,7 @@ public class Character implements Damageable {
     public void equip(Weapon weapon){
         this.weapon = weapon;
         this.damage += weapon.getDamage();
+        this.inventory.remove(weapon);
     }
 
     public String getName(){

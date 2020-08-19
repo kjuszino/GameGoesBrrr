@@ -23,7 +23,7 @@ public class Goblin implements Enemy, Damageable {
     public int getLoot() {
         Random random =new Random();
         int lootChance = random.nextInt(1000);
-        if(lootChance>800){
+        if(lootChance>1){
             return 1;
         }
         return -1;

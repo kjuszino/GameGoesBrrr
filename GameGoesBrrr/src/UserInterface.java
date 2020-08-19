@@ -25,6 +25,16 @@ public class UserInterface {
                     advance = scanner.nextLine();
                     continue;
                 }
+                //doesn't work atm
+                if(advance.equals("equip")){
+                    System.out.println("What item do you want to equip?");
+                    String item = scanner.nextLine();
+                    if(this.mainCharacter.getInventory().getItems().contains(item)){
+                        this.mainCharacter.equip(this.mainCharacter.getInventory().weaponByName(item));
+                    }
+                    advance = scanner.nextLine();
+                    continue;
+                }
                 System.out.println(this.mainCharacter.getName() + " takes a step forward");
                 System.out.println();
                 eventDrawer();
