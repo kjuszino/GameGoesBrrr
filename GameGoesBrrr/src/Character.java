@@ -18,10 +18,13 @@ public class Character implements Damageable {
     public void changeName(String newName){
         this.name = newName;
     }
-    public void equip(Weapon weapon){
-        this.weapon = weapon;
-        this.damage += weapon.getDamage();
-        this.inventory.remove(weapon);
+    public void equip(Equipable equipable){
+        if(equipable instanceof Weapon){
+            this.weapon = (Weapon)equipable;
+            this.damage = weapon.getDamage();
+            this.inventory.remove(weapon);
+        }
+
     }
 
     public String getName(){

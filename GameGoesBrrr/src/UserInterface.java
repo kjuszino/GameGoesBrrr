@@ -16,7 +16,11 @@ public class UserInterface {
         System.out.println("Hello, what's your name?");
         this.mainCharacter.changeName(scanner.nextLine());
         System.out.println("Hello, " + this.mainCharacter.getName());
-        this.mainCharacter.equip(new Weapon(0));//equips the "fist" weapon
+        System.out.println("To access the list of commands, type in \"help\"");
+        Weapon fists = new Weapon(0);
+        this.mainCharacter.getInventory().add(0);
+        this.mainCharacter.equip(fists);//equips the "fist" weapon
+        this.mainCharacter.getInventory().remove(fists);
         while(this.mainCharacter.getHealth()>0) {
             String advance = scanner.nextLine();
             while(!(advance.equals("quit"))){
@@ -25,13 +29,21 @@ public class UserInterface {
                     advance = scanner.nextLine();
                     continue;
                 }
-                //doesn't work atm
+
                 if(advance.equals("equip")){
                     System.out.println("What item do you want to equip?");
                     String item = scanner.nextLine();
-                    if(this.mainCharacter.getInventory().getItems().contains(item)){
-                        this.mainCharacter.equip(this.mainCharacter.getInventory().weaponByName(item));
+
+                    if(this.mainCharacter.getInventory().getItems().contains(this.mainCharacter.getInventory().itemByName(item))){
+                        if(this.mainCharacter.getInventory().itemByName(item) instanceof Equipable){
+                            this.mainCharacter.equip((Equipable)this.mainCharacter.getInventory().itemByName(item));
+                            System.out.println(this.mainCharacter.getName() + " has equipped " + item);
+                        }else{
+                            System.out.println("The item cannot be equipped");
+                        }
+
                     }
+
                     advance = scanner.nextLine();
                     continue;
                 }
@@ -81,9 +93,9 @@ public class UserInterface {
         System.out.println();
         int drop = enemy.getLoot();
         if(drop>0){
-            Weapon weapon = new Weapon(drop);
-            this.mainCharacter.getInventory().add(weapon);
-            System.out.println(enemy + " has been defeated by " + this.mainCharacter.getName() + " and dropped " + weapon.getName());
+
+            this.mainCharacter.getInventory().add(drop);
+            System.out.println(enemy + " has been defeated by " + this.mainCharacter.getName() + " and dropped " + this.mainCharacter.getInventory().itemByID(drop).getName());
             return;
         }
         System.out.println(enemy + " has been defeated by " + this.mainCharacter.getName());
