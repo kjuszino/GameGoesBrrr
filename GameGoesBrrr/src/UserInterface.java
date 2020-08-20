@@ -90,6 +90,7 @@ public class UserInterface {
             System.out.println();
 
         }
+
         System.out.println();
         int drop = enemy.getLoot();
         if(drop>0){
