@@ -3,5 +3,6 @@ public interface Enemy {
     int getHealth();
     int getDamage();
     void attack(Damageable damageable);
+    int getCoinLoot();
 
 }

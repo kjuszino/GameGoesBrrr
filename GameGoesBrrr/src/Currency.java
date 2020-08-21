@@ -59,6 +59,6 @@ public class Currency {
         }else if(this.thousands >0){
             return this.thousands + "." + this.single / 10 + " K Coins";
         }
-        return this.single + "Coins";
+        return this.single + " Coins";
     }
 }

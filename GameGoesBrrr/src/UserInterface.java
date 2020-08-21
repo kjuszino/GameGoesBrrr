@@ -48,7 +48,7 @@ public class UserInterface {
 
                 // in the print print the getCurrency function
                 if(advance.equals("bal")){
-                    System.out.println(this.mainCharacter.getCurrency().getCurrency());
+                    System.out.println(this.mainCharacter.getCurrency());
                     advance = scanner.nextLine();
                     continue;
                 }
@@ -126,12 +126,14 @@ public class UserInterface {
 
         System.out.println();
         int drop = enemy.getLoot();
+        int coinDrop = enemy.getCoinLoot();
         if(drop>0){
 
             this.mainCharacter.getInventory().add(drop);
-            System.out.println(enemy + " has been defeated by " + this.mainCharacter.getName() + " and dropped " + this.mainCharacter.getInventory().itemByID(drop).getName());
+            this.mainCharacter.getCurrency().addCurrency(coinDrop);
+            System.out.println(enemy + " has been defeated by " + this.mainCharacter.getName() + " and dropped " + this.mainCharacter.getInventory().itemByID(drop).getName() + " and " + this.mainCharacter.getCurrency());
             return;
         }
-        System.out.println(enemy + " has been defeated by " + this.mainCharacter.getName());
+        System.out.println(enemy + " has been defeated by " + this.mainCharacter.getName() + " and dropped " + this.mainCharacter.getCurrency());
     }
 }
