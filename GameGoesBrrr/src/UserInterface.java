@@ -4,15 +4,17 @@ import java.util.Random;
 public class UserInterface {
     private final Scanner scanner;
     private Character mainCharacter;
+    private Currency currency;
     public UserInterface(){
         this.scanner = new Scanner(System.in);
         this.mainCharacter = new Character("Placeholder");
+        this.currency = new Currency();
 
     }
     //runs the game
     public void start() throws InterruptedException {
 
-
+        System.out.println(this.currency.getCurrency());
         System.out.println("Hello, what's your name?");
         this.mainCharacter.changeName(scanner.nextLine());
         System.out.println("Hello, " + this.mainCharacter.getName());
