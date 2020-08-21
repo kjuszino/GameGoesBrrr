@@ -54,6 +54,11 @@ public class Currency {
     }
     @Override
     public String toString() {
-        return null;
+        if(this.millions > 0){
+            return this.millions + "." + this.thousands / 10 + " M Coins";
+        }else if(this.thousands >0){
+            return this.thousands + "." + this.single / 10 + " K Coins";
+        }
+        return this.single + "Coins";
     }
 }

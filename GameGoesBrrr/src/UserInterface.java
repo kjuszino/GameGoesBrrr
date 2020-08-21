@@ -4,17 +4,14 @@ import java.util.Random;
 public class UserInterface {
     private final Scanner scanner;
     private Character mainCharacter;
-    private Currency currency;
     public UserInterface(){
         this.scanner = new Scanner(System.in);
         this.mainCharacter = new Character("Placeholder");
-        this.currency = new Currency();
-
     }
     //runs the game
     public void start() throws InterruptedException {
 
-        System.out.println(this.currency.getCurrency());
+
         System.out.println("Hello, what's your name?");
         this.mainCharacter.changeName(scanner.nextLine());
         System.out.println("Hello, " + this.mainCharacter.getName());
@@ -49,12 +46,20 @@ public class UserInterface {
                     continue;
                 }
 
+                // in the print print the getCurrency function
+                if(advance.equals("bal")){
+                    System.out.println();
+                    advance = scanner.nextLine();
+                    continue;
+                }
+
                 if(advance.equals("help")){
                     System.out.println("Enter - move forward");
                     System.out.println("\"help\" prints the list of commands");
                     System.out.println("\"inventory\" prints the inventory");
                     System.out.println("\"equip\" equips the item with the name provided on the next line");
                     System.out.println("\"heal\" heals using the potion with the name provided on the next line");
+                    System.out.println("\"bal\" displays your balance on the next line");
 
                     advance = scanner.nextLine();
                     continue;
