@@ -33,7 +33,7 @@ public class Goblin implements Enemy, Damageable {
             return 401;
         }else if(lootChance>=800 && lootChance<900){
            return 601;
-        } else if(lootChance>= 900 && lootChance<1000){
+        }else if(lootChance>= 900 && lootChance<=1000){
             return 1001;
         }
         return -1;

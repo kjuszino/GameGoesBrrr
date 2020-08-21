@@ -15,11 +15,11 @@ public class Character implements Damageable {
         this.health = 100;
         this.maxHealth = 100;
         this.damage = 1;
-        this.weapon = new Weapon(0);
+        this.weapon = new Weapon(2);
         this.inventory = new Inventory();
-        this.chestplate = new Chestplate(-1);
-        this.helmet = new Helmet (-2);
-        this.leggings = new Leggings (-3);
+        this.chestplate = new Chestplate(202);
+        this.helmet = new Helmet(402);
+        this.leggings = new Leggings(602);
         this.money = new Currency();
     }
     //Changes the name of the character
@@ -58,7 +58,7 @@ public class Character implements Damageable {
                 this.inventory.add(this.leggings.getItemID());
             }
             this.leggings = (Leggings) equipable;
-            this.maxHealth =+ this.leggings.getDurability();
+            this.maxHealth += this.leggings.getDurability();
             this.heal(this.leggings.getDurability());
             this.inventory.remove(this.leggings);
         }

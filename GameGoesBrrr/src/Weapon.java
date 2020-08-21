@@ -3,13 +3,15 @@ public class Weapon extends Item implements Equipable {
     public int damage;
     public Weapon(int ItemID){
         super(ItemID);
-        if(super.getItemID() == 0){
-            super.setName("placeholder");
-            this.damage = 0;
-        }else if(super.getItemID() == 1){
+        if(super.getItemID() == 1){
             super.setName("Rusty Dagger");
             this.damage = 2;
 
+        }
+
+        if(super.getItemID() == 2){
+            super.setName("placeholder");
+            this.damage = 0;
         }
 
     }

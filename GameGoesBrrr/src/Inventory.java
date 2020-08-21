@@ -9,7 +9,7 @@ public class Inventory {
 
     public void add(int ID){
 
-        if(ID <= 200){
+        if(ID>= 1 && ID <= 200){
             Weapon weapon = new Weapon(ID);
             this.items.add(weapon);
             return;
