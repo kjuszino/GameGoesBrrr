@@ -48,7 +48,7 @@ public class UserInterface {
 
                 // in the print print the getCurrency function
                 if(advance.equals("bal")){
-                    System.out.println();
+                    System.out.println(this.mainCharacter.getCurrency().getCurrency());
                     advance = scanner.nextLine();
                     continue;
                 }

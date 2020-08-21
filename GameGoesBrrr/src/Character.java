@@ -66,7 +66,9 @@ public class Character implements Damageable {
     }
 
 
-
+    public Currency getCurrency(){
+        return this.money;
+    }
     public String getName(){
 
         return this.name;
