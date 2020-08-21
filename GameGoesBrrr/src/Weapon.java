@@ -7,7 +7,7 @@ public class Weapon extends Item implements Equipable {
             super.setName("placeholder");
             this.damage = 0;
         }else if(super.getItemID() == 1){
-            super.setName("Rusty dagger");
+            super.setName("Rusty Dagger");
             this.damage = 2;
 
         }

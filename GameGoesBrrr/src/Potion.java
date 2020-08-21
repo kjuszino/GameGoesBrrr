@@ -3,7 +3,7 @@ public class Potion extends Item {
     public Potion(int itemID) {
         super(itemID);
         if(itemID == 1001){
-            super.setName("Small health potion");
+            super.setName("Small Health Potion");
             this.healAmount = 20;
         }
     }

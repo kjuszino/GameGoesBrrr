@@ -13,10 +13,16 @@ public class Inventory {
             Weapon weapon = new Weapon(ID);
             this.items.add(weapon);
             return;
-        }else if(ID>=201 && ID<=401){
+        }else if(ID>=201 && ID<401){
             Chestplate chestplate = new Chestplate(ID);
             this.items.add(chestplate);
             return;
+        }else if(ID>=401 && ID<601){
+            Helmet helmet = new Helmet(ID);
+            this.items.add(helmet);
+        }else if(ID>=601 && ID<801){
+            Leggings leggings = new Leggings(ID);
+            this.items.add(leggings);
         }else if(ID>=1001 && ID<=1201){
             Potion potion = new Potion(ID);
             this.items.add(potion);

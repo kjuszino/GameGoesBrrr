@@ -6,6 +6,8 @@ public class Character implements Damageable {
     private Weapon weapon;
     private Inventory inventory;
     private Chestplate chestplate;
+    private Helmet helmet;
+    private Leggings leggings;
 
     public Character(String name){
         this.name = name;
@@ -15,6 +17,8 @@ public class Character implements Damageable {
         this.weapon = new Weapon(0);
         this.inventory = new Inventory();
         this.chestplate = new Chestplate(-1);
+        this.helmet = new Helmet (-2);
+        this.leggings = new Leggings (-3);
     }
     //Changes the name of the character
     public void changeName(String newName){
@@ -22,15 +26,39 @@ public class Character implements Damageable {
     }
     public void equip(Equipable equipable){
         if(equipable instanceof Weapon){
+            if(!(this.weapon.getName().toLowerCase().equals("placeholder"))){
+                this.inventory.add(this.weapon.getItemID());
+            }
             this.weapon = (Weapon)equipable;
-            this.damage = weapon.getDamage();
-            this.inventory.remove(weapon);
+            this.damage = this.weapon.getDamage();
+            this.inventory.remove(this.weapon);
         }
         if(equipable instanceof Chestplate){
+            if(!(this.chestplate.getName().toLowerCase().equals("placeholder"))){
+                this.inventory.add(this.chestplate.getItemID());
+            }
             this.chestplate = (Chestplate) equipable;
             this.maxHealth += this.chestplate.getDurability();
-            this.health += this.chestplate.getDurability();
-            this.inventory.remove(chestplate);
+            this.heal(this.helmet.getDurability());
+            this.inventory.remove(this.chestplate);
+        }
+        if(equipable instanceof Helmet){
+            if(!(this.helmet.getName().toLowerCase().equals("placeholder"))){
+                this.inventory.add(this.helmet.getItemID());
+            }
+            this.helmet = (Helmet) equipable;
+            this.maxHealth += this.helmet.getDurability();
+            this.heal(this.helmet.getDurability());
+            this.inventory.remove(this.helmet);
+        }
+        if(equipable instanceof Leggings){
+            if(!(this.leggings.getName().toLowerCase().equals("placeholder"))){
+                this.inventory.add(this.leggings.getItemID());
+            }
+            this.leggings = (Leggings) equipable;
+            this.maxHealth =+ this.leggings.getDurability();
+            this.heal(this.leggings.getDurability());
+            this.inventory.remove(this.leggings);
         }
 
     }

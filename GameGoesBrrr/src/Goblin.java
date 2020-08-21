@@ -24,10 +24,16 @@ public class Goblin implements Enemy, Damageable {
         Random random =new Random();
         int lootChance = random.nextInt(1000);
         if(lootChance>=0 && lootChance <500){
+            return -1;
+        }else if(lootChance>=500 && lootChance<600){
             return 1;
-        }else if(lootChance>=500 && lootChance<750){
+        }else if(lootChance>=600 && lootChance<700){
             return 201;
-        }else if(lootChance<=1000){
+        }else if(lootChance>=700 && lootChance <800){
+            return 401;
+        }else if(lootChance>=800 && lootChance<900){
+           return 601;
+        } else if(lootChance>= 900 && lootChance<1000){
             return 1001;
         }
         return -1;
