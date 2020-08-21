@@ -131,9 +131,10 @@ public class UserInterface {
 
             this.mainCharacter.getInventory().add(drop);
             this.mainCharacter.getCurrency().addCurrency(coinDrop);
-            System.out.println(enemy + " has been defeated by " + this.mainCharacter.getName() + " and dropped " + this.mainCharacter.getInventory().itemByID(drop).getName() + " and " + this.mainCharacter.getCurrency());
+            System.out.println(enemy + " has been defeated by " + this.mainCharacter.getName() + " and dropped " + this.mainCharacter.getInventory().itemByID(drop).getName() + " and " + coinDrop + " coins!");
             return;
         }
-        System.out.println(enemy + " has been defeated by " + this.mainCharacter.getName() + " and dropped " + this.mainCharacter.getCurrency());
+        this.mainCharacter.getCurrency().addCurrency(coinDrop);
+        System.out.println(enemy + " has been defeated by " + this.mainCharacter.getName() + " and dropped " + coinDrop + " coins!");
     }
 }
