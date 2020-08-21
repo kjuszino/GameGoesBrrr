@@ -8,6 +8,7 @@ public class Character implements Damageable {
     private Chestplate chestplate;
     private Helmet helmet;
     private Leggings leggings;
+    private Currency money;
 
     public Character(String name){
         this.name = name;
@@ -19,6 +20,7 @@ public class Character implements Damageable {
         this.chestplate = new Chestplate(-1);
         this.helmet = new Helmet (-2);
         this.leggings = new Leggings (-3);
+        this.money = new Currency();
     }
     //Changes the name of the character
     public void changeName(String newName){
