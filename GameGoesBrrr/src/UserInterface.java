@@ -17,10 +17,6 @@ public class UserInterface {
         this.mainCharacter.changeName(scanner.nextLine());
         System.out.println("Hello, " + this.mainCharacter.getName());
         System.out.println("To access the list of commands, type in \"help\"");
-        Weapon fists = new Weapon(0);
-        this.mainCharacter.getInventory().add(0);
-        this.mainCharacter.equip(fists);//equips the "fist" weapon
-        this.mainCharacter.getInventory().remove(fists);
         while(this.mainCharacter.getHealth()>0) {
             String advance = scanner.nextLine();
             while(!(advance.equals("quit"))){
@@ -36,14 +32,43 @@ public class UserInterface {
 
                     if(this.mainCharacter.getInventory().getItems().contains(this.mainCharacter.getInventory().itemByName(item))){
                         if(this.mainCharacter.getInventory().itemByName(item) instanceof Equipable){
+                            String bruh = this.mainCharacter.getInventory().itemByName(item).getName();
                             this.mainCharacter.equip((Equipable)this.mainCharacter.getInventory().itemByName(item));
-                            System.out.println(this.mainCharacter.getName() + " has equipped " + item);
+                            System.out.println(this.mainCharacter.getName() + " has equipped " + bruh);
                         }else{
                             System.out.println("The item cannot be equipped");
                         }
 
+                    }else{
+                        System.out.println(this.mainCharacter.getName() + " doesn't have that item, or the item doesn't exist");
                     }
 
+                    advance = scanner.nextLine();
+                    continue;
+                }
+
+                if(advance.equals("help")){
+                    System.out.println("Enter - move forward");
+                    System.out.println("\"help\" prints the list of commands");
+                    System.out.println("\"inventory\" prints the inventory");
+                    System.out.println("\"equip\" equips the item with the name provided on the next line");
+                    System.out.println("\"heal\" heals using the potion with the name provided on the next line");
+
+                    advance = scanner.nextLine();
+                    continue;
+                }
+
+                if(advance.equals("heal")){
+                    System.out.println("What health potion do you want to use?");
+                    String choice = scanner.nextLine();
+                    if(this.mainCharacter.getInventory().getItems().contains(this.mainCharacter.getInventory().itemByName(choice))){
+                        Potion potion = new Potion(this.mainCharacter.getInventory().itemByName(choice).getItemID());
+                        System.out.println(this.mainCharacter.getName() + " healed for " + this.mainCharacter.amountHealed(potion.getHealAmount()) + " health");
+                        this.mainCharacter.heal(potion.getHealAmount());
+                        this.mainCharacter.getInventory().remove(potion);
+                    }else{
+                        System.out.println(this.mainCharacter.getName() + " doesn't have that potion");
+                    }
                     advance = scanner.nextLine();
                     continue;
                 }
@@ -66,12 +91,13 @@ public class UserInterface {
             System.out.println("Nothing happens");
         }else if(encounter>=501 && encounter<=990){
             fight(new Goblin());
-        }else if(encounter>=991 && encounter<=1000){
+        }else if(encounter>=997 && encounter<=1000){
             fight(new Dog());
         }
     }
 
     public void fight(Enemy enemy) throws InterruptedException {
+        System.out.println(this.mainCharacter.getName() + " has been ambushed by " + enemy);
         while(enemy.getHealth()>0 && this.mainCharacter.getHealth()>0) {
             this.mainCharacter.attack((Damageable) enemy);
             System.out.println(this.mainCharacter.getName() + " attacked " + enemy + " and dealt " + this.mainCharacter.getDamage() + " damage");

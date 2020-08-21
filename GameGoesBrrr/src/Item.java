@@ -31,7 +31,7 @@ public class Item {
             return false;
         }
         Item compared = (Item) object;
-        if(this.name.equals(compared.getName())){
+        if(this.name.toLowerCase().equals(compared.getName().toLowerCase().trim())){
             return true;
         }
         return false;

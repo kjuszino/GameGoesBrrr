@@ -5,14 +5,16 @@ public class Character implements Damageable {
     private int damage;
     private Weapon weapon;
     private Inventory inventory;
+    private Chestplate chestplate;
 
     public Character(String name){
         this.name = name;
         this.health = 100;
         this.maxHealth = 100;
-        this.damage = 0;
+        this.damage = 1;
         this.weapon = new Weapon(0);
         this.inventory = new Inventory();
+        this.chestplate = new Chestplate(-1);
     }
     //Changes the name of the character
     public void changeName(String newName){
@@ -24,8 +26,16 @@ public class Character implements Damageable {
             this.damage = weapon.getDamage();
             this.inventory.remove(weapon);
         }
+        if(equipable instanceof Chestplate){
+            this.chestplate = (Chestplate) equipable;
+            this.maxHealth += this.chestplate.getDurability();
+            this.health += this.chestplate.getDurability();
+            this.inventory.remove(chestplate);
+        }
 
     }
+
+
 
     public String getName(){
 
@@ -57,10 +67,23 @@ public class Character implements Damageable {
     }
     //Heals the player
     public void heal(int amount){
+
         if(this.health + amount<=this.maxHealth){
             this.health+=amount;
+
         }else{
+
             this.health = maxHealth;
+
+        }
+    }
+
+    public int amountHealed(int amount){
+        if(this.health + amount <= maxHealth){
+            return amount;
+        }else{
+            int healed = this.maxHealth - this.health;
+            return healed;
         }
     }
     //Deals damage to the object implementing Damageable interface

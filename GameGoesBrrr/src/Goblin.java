@@ -4,7 +4,7 @@ public class Goblin implements Enemy, Damageable {
     private int damage;
 
     public Goblin(){
-        this.health = 10;
+        this.health = 3;
         this.damage = 3;
     }
 
@@ -23,8 +23,12 @@ public class Goblin implements Enemy, Damageable {
     public int getLoot() {
         Random random =new Random();
         int lootChance = random.nextInt(1000);
-        if(lootChance>1){
+        if(lootChance>=0 && lootChance <500){
             return 1;
+        }else if(lootChance>=500 && lootChance<750){
+            return 201;
+        }else if(lootChance<=1000){
+            return 1001;
         }
         return -1;
     }
